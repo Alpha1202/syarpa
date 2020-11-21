@@ -1,0 +1,1 @@
+export const LOQATE_API_URL = 'https://api.addressy.com/BankAccountValidation/Interactive/Validate/v2.00/json3.ws'
