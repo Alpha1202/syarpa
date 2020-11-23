@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { SafeAreaView, StyleSheet,  Keyboard, } from 'react-native'
 
 import TextInput from '../components/Input'
@@ -8,14 +8,16 @@ import { BoldText } from '../components/Text'
 
 const welcome = ({ navigation }) => {
 const [username, setUsername] = useState('')
+
   return (
     <SafeAreaView onStartShouldSetResponder={() => Keyboard.dismiss()} style={styles.container}>
       <BoldText>{username.trim().length < 1 ? 'Please enter any name to proceed' : `Welcome, ${username.trim()}` }</BoldText>
       <TextInput placeholder="eg: john doe" value={username} onChangeText={(value) => setUsername(value)}  />
-      <Button handlePress={username.trim().length < 1 ? null : () => navigation.navigate('account-verification', { username })} title={ username.trim().length < 1 ? 'Enter' : 'Proceed to verify account' } />
+      <Button handlePress={username.trim().length < 1 ? null : () => {navigation.navigate('account-verification', { username }), setUsername('')}} title={ username.trim().length < 1 ? 'Enter' : 'Proceed to verify account' } />
     </SafeAreaView>
   )
 }
+
 
 const styles = StyleSheet.create({
   container: {
