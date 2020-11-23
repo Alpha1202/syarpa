@@ -1,0 +1,6 @@
+module Pods_syarpa {
+  umbrella header "Pods-syarpa-umbrella.h"
+
+  export *
+  module * { export * }
+}
